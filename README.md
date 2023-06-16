@@ -59,7 +59,7 @@
 
 - Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
 
-(https://github.com/danilomoreno98/nequi/blob/main/images/Diagramas%20-EDA.drawio.png)
+![Untitled](https://github.com/danilomoreno98/nequi/blob/main/images/Diagramas%20-EDA.drawio.png)
 
 # Paso 3: Definir el modelo de datos
 
