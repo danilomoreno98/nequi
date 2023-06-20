@@ -122,7 +122,18 @@ Para ejecutar la ETL, se simula un entorno local con el orquestador Airflow, con
 docker-compose up
 ```
 ## Crear las tuberías de datos y el modelo de datos
-### Nota: Se crean los flujos, estos no son funcionales, solo son de referencia. Es decir no ejecutan ni modelos dbt, ni disparan crawlers de AWS o almacenan información, solo detallan el flujo de la arquitectura y los controles de calidad propuestos
+### Nota: Los DAGs con los pipelines no son funcionales, solo son de referencia. Es decir no ejecutan ni modelos dbt, ni disparan crawlers de AWS o almacenan información, solo detallan el flujo de la arquitectura y los controles de calidad propuestos.
+- DAG Capa de Ingesta
+Este DAG se encuentra dentro del folder DAGS/extraction_layer.py
+<p align="center">
+    <img src="https://github.com/danilomoreno98/nequi/blob/main/images/extraction_layer.png">
+    </p>
+
+- DAG Capa de Procesamiento y modelamiento
+Este DAG se encuentra dentro del folder DAGS/processing_modeling_layer.py
+<p align="center">
+    <img src="https://github.com/danilomoreno98/nequi/blob/main/images/processing_modeling_layer.png">
+    </p>
 
 ## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se esperaba
 ## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
