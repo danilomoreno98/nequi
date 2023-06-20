@@ -1,7 +1,7 @@
 """
 **********************************************************
 2023-20-06
-Prueba técnica Nequi
+Prueba técnica Nequi - Data Engineer
 Elaborado por: Danilo Hernando Moreno Gonzalez
 Script correspondiente al EDA, Punto 1
 **********************************************************
