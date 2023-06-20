@@ -33,7 +33,7 @@
         Columna: Customer ID -> Tipo: float64
         Columna: Country -> Tipo: object
         
-    3. **Exploración datos nulos:** Se deja como observación que la columna descripción null cuenta con datos en blanco, sin embargo, para el negocio no es mandatorio que tenga información. Sin embargo, para la columna denominada “Customer ID” es mandatorio que no tenga valores null como regla de negocio, por tanto, toca aplicar reglas de calidad para esta novedad.
+3. **Exploración datos nulos:** Se deja como observación que la columna descripción null cuenta con datos en blanco, sin embargo, para el negocio no es mandatorio que tenga información. Sin embargo, para la columna denominada “Customer ID” es mandatorio que no tenga valores null como regla de negocio, por tanto, toca aplicar reglas de calidad para esta novedad.
         
         **** Exploración datos nulos *****
         
@@ -47,28 +47,35 @@
         Country             0
         dtype: int64
         
-    4. **Exploración datos duplicados:** Dado que el dataset consta de registros de transacciones, se van  a encontrar registros duplicados, sin embargo, se analizará el numero unico de transacciones( ya que una factura se repite n numero de productos) y lo mismo sucede con el usuario, a continuacion los resultados:
+4. **Exploración datos duplicados:** Dado que el dataset consta de registros de transacciones, se van  a encontrar registros duplicados, sin embargo, se analizará el numero unico de transacciones( ya que una factura se repite n numero de productos) y lo mismo sucede con el usuario, a continuacion los resultados:
         
         **** Exploración valores unicos, columna 'Invoice': 53628 *****
         
         **** Exploración valores unicos, columna 'Customer ID': 5942 *****
         
-    5. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
+5. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
     
 
 - Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
 
-![Untitled](Nequi%20d1d5bbdf23224bb9af24cfe30be65b42/Untitled.png)
+<p align="center">
+  <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Diagramas%20-EDA.drawio.png">
+</p>
 
 # Paso 3: Definir el modelo de datos
 
 - Trazar el modelo de datos conceptual y explicar por qué se eligió ese modelo.
     
     A continuación se traza el modelo conceptual, la explicación detallada se encuentra en el “**Punto 5: Completar la redacción del proyecto”**
+    <p align="center">
+    <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Modelos%20de%20datos%20dimensional.png">
+    </p>
     
 - Diseñar la arquitectura y los recursos utilizados.
 
-![https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura - Nequi.png](https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura - Nequi.png)
+<p align="center">
+    <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura%20-%20Nequi.png">
+    </p>
 
 - Indique claramente los motivos de la elección de las herramientas y tecnologías para el proyecto.
 
@@ -119,18 +126,19 @@ clave única, tipo de datos, etc.)
 
 Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
 
-- Codigo del producto
-- Identificador cliente, pais
-- Codigo de orden
-- Dia de facturación
-- ¿Qué preguntas quieres hacer?
-    - ¿ Cuantas fueran las unidades vendidas por cada producto ?
-    - ¿ Cuales son los productos más vendidos ?
-    - ¿ Cual es el pais de origen de los usuarios que más compraron ?
-    - ¿ Total de productos se venden en cada mes, año ?
-    - Productos que más se venden en cada mes del año
+    - Codigo del producto
+    - Identificador cliente, pais
+    - Codigo de orden
+    - Dia de facturación
+    - ¿Qué preguntas quieres hacer?
+        - ¿ Cuantas fueran las unidades vendidas por cada producto ?
+        - ¿ Cuales son los productos más vendidos ?
+        - ¿ Cual es el pais de origen de los usuarios que más compraron ?
+        - ¿ Total de productos se venden en cada mes, año ?
+        - Productos que más se venden en cada mes del año
+
 - ¿Por qué eligió el modelo que eligió?
-    - 
+    - fdgd
     
 - Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
 escenarios:
