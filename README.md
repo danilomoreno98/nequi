@@ -4,9 +4,9 @@
 
 ## Identificar y recopilar los datos que usaras para tu proyecto.
     
-    Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe tener más de 1 millon de datos (filas), se recopilan los datos de la fuente Kaggle: [https://www.kaggle.com/datasets/sanlian/online-retail-dataset](https://www.kaggle.com/datasets/sanlian/online-retail-dataset)
+Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe tener más de 1 millon de datos (filas), se recopilan los datos de la fuente Kaggle: [https://www.kaggle.com/datasets/sanlian/online-retail-dataset](https://www.kaggle.com/datasets/sanlian/online-retail-dataset)
     
-    [https://archive.ics.uci.edu/dataset/502/online+retail+ii](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
+[https://archive.ics.uci.edu/dataset/502/online+retail+ii](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
     
 
 - Explicar para qué casos de uso final deseas preparar los datos, por ejemplo: tabla de análisis, aplicación de fondo, base de datos de fuentes de verdad, etc.)
