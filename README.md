@@ -2,7 +2,7 @@
 
 # Paso 1: Alcance del proyecto y captura de datos
 
-- Identificar y recopilar los datos que usaras para tu proyecto.
+## Identificar y recopilar los datos que usaras para tu proyecto.
     
     Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe tener más de 1 millon de datos (filas), se recopilan los datos de la fuente Kaggle: [https://www.kaggle.com/datasets/sanlian/online-retail-dataset](https://www.kaggle.com/datasets/sanlian/online-retail-dataset)
     
