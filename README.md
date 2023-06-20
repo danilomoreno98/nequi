@@ -144,10 +144,11 @@ Como se observa en la imagen anterior de la "Capa de procesamiento y modelamient
 ## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
 ## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
 ## Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
-Como se observa en la imagen anterior de la "Capa Ingesta", hay una tarea dentro del DAG destinada a la comprobración de fuente/conteo para asegurar la integridad de los datos, esta se denota como:
+Como se observa en la imagen anterior de la "Capa Ingesta", hay una tarea dentro del DAG destinada a la comprobración de fuente/conteo para asegurar la integridad de los datos, la idea es una vez se realice la extracción de los datos desde la fuente se pueda contrastar para estar seguros de que los datos cumplen con la integridad antes de ser catalogados en Glue, esta se denota como:
 - count_source_extraction
 ## Incluir un diccionario de datos
 ## Criterio de reproducibilidad
+Gracias al uso de Apache Airflow como orquestador, podemos reproducir flujos de trabajo y tareas en diferentes entornos y replicarlos para nuevos casos de uso, siempre manteniendo un control efectivo sobre el ciclo de vida del desarrollo y la implementación.
 
 # Paso 5: Completar la redacción del proyecto
 
