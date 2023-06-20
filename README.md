@@ -53,12 +53,13 @@ Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los
         **** Exploración valores unicos, columna 'Customer ID': 5942 *****
         
 5. **Exploración consistencia en datos:** En este caso en particular es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
+```
                 ***** 5. Exploración consistencia datos numericos *****
                         count          mean          std       min       25%      50%       75%      max
         Quantity     1067371.0      9.938898   172.705794 -80995.00      1.00      3.0     10.00  80995.0
         Price        1067371.0      4.649388   123.553059 -53594.36      1.25      2.1      4.15  38970.0
         Customer ID   824364.0  15324.638504  1697.464450  12346.00  13975.00  15255.0  16797.00  18287.0
-    
+```
 
 ## Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
 
