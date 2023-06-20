@@ -18,11 +18,13 @@ Tabla de análisis del comportamiento de facturación: Examinar los patrones de 
     
 Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los resultados fueron:
     
-1. **Lectura de datos:** 
+1. **Lectura de datos:**
+``` 
         “Numero de registros del dataset: 1067371”
+```
 2. **Exploración cantidad de variables y tipo:** Se deja como observación que la columna denominada “Customer ID” debe ser tratada como tipo int
         
-        **** Exploración cantidad de variables y tipo *****
+        ***** 2. Exploración cantidad de variables y tipo *****
         Columna: Invoice -> Tipo: object
         Columna: StockCode -> Tipo: object
         Columna: Description -> Tipo: object
@@ -34,7 +36,7 @@ Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los
         
 3. **Exploración datos nulos:** Se deja como observación que la columna descripción null cuenta con datos en blanco, sin embargo, para el negocio no es mandatorio que tenga información. Sin embargo, para la columna denominada “Customer ID” es mandatorio que no tenga valores null como regla de negocio, por tanto, toca aplicar reglas de calidad para esta novedad.
         
-        **** Exploración datos nulos *****
+        ***** 3. Exploración datos nulos *****
         
         Invoice             0
         StockCode           0
@@ -48,9 +50,8 @@ Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los
         
 4. **Exploración datos duplicados:** Dado que el dataset consta de registros de transacciones, se van  a encontrar registros duplicados, sin embargo, se analizará el numero unico de transacciones( ya que una factura se repite n numero de productos) y lo mismo sucede con el usuario, a continuacion los resultados:
         
-        **** Exploración valores unicos, columna 'Invoice': 53628 *****
-        
-        **** Exploración valores unicos, columna 'Customer ID': 5942 *****
+        ***** 4. Exploración valores unicos, columna 'Invoice': 53628 *****
+        ***** 4. Exploración valores unicos, columna 'Customer ID': 5942 *****
         
 5. **Exploración consistencia en datos:** En este caso en particular es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
 ```
