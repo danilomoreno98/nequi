@@ -147,6 +147,17 @@ Como se observa en la imagen anterior de la "Capa de procesamiento y modelamient
 Como se observa en la imagen anterior de la "Capa Ingesta", hay una tarea dentro del DAG destinada a la comprobración de fuente/conteo para asegurar la integridad de los datos, la idea es una vez se realice la extracción de los datos desde la fuente se pueda contrastar para estar seguros de que los datos cumplen con la integridad antes de ser catalogados en Glue, esta se denota como:
 - count_source_extraction
 ## Incluir un diccionario de datos
+| Columna      | Descripción                                                    | Tipo de datos | 
+|--------------|----------------------------------------------------------------|---------------|
+| InvoiceNo    | Número de factura.                                             | String      |
+| StockCode    | Código del producto.                                           | String       |
+| Description  | Nombre del producto.                                           | String       |
+| Quantity     | Cantidad de cada producto por transacción.                     | Numérico      |
+| InvoiceDate  | Fecha y hora de la factura.                                    | Datetime      |
+| UnitPrice    | Precio unitario.                                               | Numérico      |
+| CustomerID   | Número de cliente.                                             | Numerico       |
+| Country      | Nombre del país donde reside el cliente.                       | String       |
+
 ## Criterio de reproducibilidad
 Gracias al uso de Apache Airflow como orquestador, podemos reproducir flujos de trabajo y tareas en diferentes entornos y replicarlos para nuevos casos de uso, siempre manteniendo un control efectivo sobre el ciclo de vida del desarrollo y la implementación.
 
