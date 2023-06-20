@@ -1,3 +1,12 @@
+"""
+**********************************************************
+2023-20-06
+Prueba técnica Nequi
+Elaborado por: Danilo Hernando Moreno Gonzalez
+Script correspondiente al EDA, Punto 1
+**********************************************************
+"""
+
 # Importar librerias a utilizar durante el EDA
 import pandas as pd
 
@@ -64,7 +73,7 @@ def main():
     print("\n ***** 4. Exploración valores unicos, columna 'Invoice': {} *****".format(unique_values(df_final,"Invoice")))
     print("***** 4. Exploración valores unicos, columna 'Customer ID': {} *****".format(unique_values(df_final,"Customer ID")))
 
-    # Step 5: consistency_numeric_data
+    # Step 5: Consistency_numeric_data
     consistency_numeric_data(df_final)
 
 
