@@ -147,6 +147,8 @@ Como se observa en la imagen anterior de la "Capa de procesamiento y modelamient
 Como se observa en la imagen anterior de la "Capa Ingesta", hay una tarea dentro del DAG destinada a la comprobración de fuente/conteo para asegurar la integridad de los datos, la idea es una vez se realice la extracción de los datos desde la fuente se pueda contrastar para estar seguros de que los datos cumplen con la integridad antes de ser catalogados en Glue, esta se denota como:
 - count_source_extraction
 ## Incluir un diccionario de datos
+A continuación el se detalla el diccionario de datos del dataset fuente:
+
 | Columna      | Descripción                                                    | Tipo de datos | 
 |--------------|----------------------------------------------------------------|---------------|
 | InvoiceNo    | Número de factura.                                             | String      |
