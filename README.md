@@ -18,7 +18,8 @@ Tabla de análisis del comportamiento de facturación: Examinar los patrones de 
     
 Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los resultados fueron:
     
-1. **Lectura de datos:** “Numero de registros del dataset: 1067371”
+1. **Lectura de datos:** 
+        “Numero de registros del dataset: 1067371”
 2. **Exploración cantidad de variables y tipo:** Se deja como observación que la columna denominada “Customer ID” debe ser tratada como tipo int
         
         **** Exploración cantidad de variables y tipo *****
