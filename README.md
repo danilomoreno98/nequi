@@ -89,7 +89,7 @@ Nota: Se propone que los datos fuentes se encuentran almacenados en una base de 
 
 La solución cuenta con 4 capas, las cuales se describen a continuación:
 
-1. **Capa de ingesta:** En esta etapa suceden todas las ingestas de las diferentes fuentes de información para este caso en particular los datos son ingestados mediante el servicio de Glue de AWS, con la ayuda de Jobs de Glue, posterior se proponen ser almacenados en una primera etapa en una zona de denominada “Raw” dentro de un bucket de S3. Posterior a esto, dicha información nueva es rastreada con ayuda de los Crawler de S3 para ser catalogada en el Glue Catalog. Se propone debido a los siguientes motivos:
+1. **Capa de ingesta:** En esta etapa suceden todas las ingestas de las diferentes fuentes de información para este caso en particular los datos son ingestados mediante el servicio de Glue de AWS, con la ayuda de Jobs de Glue, conectandose a la base de datos de CRM y consultando de forma segura las credenciales de acceso almacenas como secretos dentro del servicio "secret manager" ,posterior se proponen ser almacenados en una primera etapa en una zona de denominada “Raw” dentro de un bucket de S3. Luego, dicha información nueva es rastreada con ayuda de los Crawler de S3 para ser catalogada en el Glue Catalog. Se propone debido a los siguientes motivos:
     1. Su facil integración con fuentes de datos transaccionales ya que solo basta con configurar el conector mediante JDBC lo que admite una amplia variedad de conectores para diferentes bases de datos transaccionales, como Amazon RDS, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle y otros, facilitando la flexibilidad si se requiere ingestar datos desde otra fuente.
     2. Es escalable, acil de configurar y ajustar la capacidad de procesamiento, lo que permite extraer informacion de grandes bases de datos.
     3. Su facil integración con otros servicios de AWS como S3, lo que te permite aprovechar el ecosistema completo de herramientas y servicios de la nube.
@@ -144,6 +144,8 @@ Como se observa en la imagen anterior de la "Capa de procesamiento y modelamient
 ## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
 ## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
 ## Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
+Como se observa en la imagen anterior de la "Capa Ingesta", hay una tarea dentro del DAG destinada a la comprobración de fuente/conteo para asegurar la integridad de los datos, esta se denota como:
+- count_source_extraction
 ## Incluir un diccionario de datos
 ## Criterio de reproducibilidad
 
