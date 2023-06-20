@@ -52,7 +52,7 @@ Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los
         
         **** Exploración valores unicos, columna 'Customer ID': 5942 *****
         
-5. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
+5. **Exploración consistencia en datos:** En este caso en particular es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
     
 
 ## Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
@@ -106,6 +106,7 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
     4. Distribuye las tareas en paralelo o serie según como sea el caso de uso, lo que mejora el rendimiento y acelera el procesamiento de datos, util en la solución si en dado caso es posible ejecutar 2 o más modelos dbt al tiempo
     5. Permite cambiar el horario de ejecución de forma muy sencilla en caso de cambios en los requisitos o condiciones del entorno.
 - Proponga con qué frecuencia deben actualizarse los datos y por qué.
+Para el negocio es necesario generar reportes diarios, por lo cual, la ingesta de datos debe hacerse una vez al dia. Para la hora de extracción es necesario considerar que no se impacte en gran medida el rendimiento de la base de datos transaccional utilizada por el CRM, de preferencial deberia realizarce en horas donde el publico no está activamente realizando ordenes de compra en la plataforma, se propone en horas de la madrugada. Una vez re realice la extracción es necesario, consecuentemente ejecutar la capa de de **Capa de procesamiento y modelado:**, para actualizar los datos en el Datawarehouse.
 
 # Paso 4: Ejecutar la ETL
 
