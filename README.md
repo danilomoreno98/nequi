@@ -126,16 +126,16 @@ clave única, tipo de datos, etc.)
 
 Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
 
- - Codigo del producto
- - Identificador cliente, pais
+    - Codigo del producto
+    - Identificador cliente, pais
     - Codigo de orden
     - Dia de facturación
-    - ¿Qué preguntas quieres hacer?
-        - ¿ Cuantas fueran las unidades vendidas por cada producto ?
-        - ¿ Cuales son los productos más vendidos ?
-        - ¿ Cual es el pais de origen de los usuarios que más compraron ?
-        - ¿ Total de productos se venden en cada mes, año ?
-        - Productos que más se venden en cada mes del año
+- ¿Qué preguntas quieres hacer?
+    - ¿ Cuantas fueran las unidades vendidas por cada producto ?
+    - ¿ Cuales son los productos más vendidos ?
+    - ¿ Cual es el pais de origen de los usuarios que más compraron ?
+    - ¿ Total de productos se venden en cada mes, año ?
+    - Productos que más se venden en cada mes del año
 
 - ¿Por qué eligió el modelo que eligió?
     - fdgd
@@ -143,7 +143,7 @@ Generar un reporte de la cantidad y total facturado de los productos entregados 
 - Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
 escenarios:
     - Si los datos se incrementaran en 100x
-        - 
+        - gdf
     - Si las tuberías se ejecutaran diariamente en una ventana de tiempo especifica.
     - Si la base de datos necesitara ser accedido por más de 100 usuarios funcionales.
     - Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su
