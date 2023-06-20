@@ -11,7 +11,7 @@
 
 - Explicar para qué casos de uso final deseas preparar los datos, por ejemplo: tabla de análisis, aplicación de fondo, base de datos de fuentes de verdad, etc.)
     
-    Tabla de análisis del comportamiento del cliente: Examinar los patrones de compra de los clientes. Podremos identificar segmentos de clientes, determinar su frecuencia de compra, comprender mejor el comportamiento del cliente y optimizar la estrategias de marketing y fidelización.
+    Tabla de análisis del comportamiento de facturación: Examinar los patrones de compra de los clientes. Podremos identificar segmentos de clientes, determinar su frecuencia de compra, comprender mejor el comportamiento del cliente y optimizar la estrategias de marketing y fidelización.
     
 
 # Paso 2: Explorar y evaluar los datos, el EDA
@@ -53,21 +53,52 @@
         
         **** Exploración valores unicos, columna 'Customer ID': 5942 *****
         
-    
-    1. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
+    5. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
     
 
 - Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
 
-<p align="center">
-  <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Diagramas%20-EDA.drawio.png">
-</p>
+![Untitled](Nequi%20d1d5bbdf23224bb9af24cfe30be65b42/Untitled.png)
 
 # Paso 3: Definir el modelo de datos
 
 - Trazar el modelo de datos conceptual y explicar por qué se eligió ese modelo.
+    
+    A continuación se traza el modelo conceptual, la explicación detallada se encuentra en el “**Punto 5: Completar la redacción del proyecto”**
+    
 - Diseñar la arquitectura y los recursos utilizados.
+
+![https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura - Nequi.png](https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura - Nequi.png)
+
 - Indique claramente los motivos de la elección de las herramientas y tecnologías para el proyecto.
+
+Nota: Se propone que los datos fuentes se encuentran almacenados en una base de datos relacional tipo PostgreSQL dentro de AWS, denotada como **CRM Invoices** y contiene los mismos datos del dataset propuesto.
+
+La solución cuenta con 4 capas, las cuales se describen a continuación:
+
+1. **Capa de ingesta:** En esta etapa suceden todas las ingestas de las diferentes fuentes de información para este caso en particular los datos son ingestados mediante el servicio de Glue de AWS, con la ayuda de Jobs de Glue, posterior se proponen ser almacenados en una primera etapa en una zona de denominada “Raw” dentro de un bucket de S3. Posterior a esto, dicha información nueva es rastreada con ayuda de los Crawler de S3 para ser catalogada en el Glue Catalog. Se propone debido a los siguientes motivos:
+    1. Su facil integración con fuentes de datos transaccionales ya que solo basta con configurar el conector mediante JDBC lo que admite una amplia variedad de conectores para diferentes bases de datos transaccionales, como Amazon RDS, Amazon Redshift, Microsoft SQL Server, MySQL, Oracle y otros, facilitando la flexibilidad si se requiere ingestar datos desde otra fuente.
+    2. Es escalable, acil de configurar y ajustar la capacidad de procesamiento, lo que permite extraer informacion de grandes bases de datos.
+    3. Su facil integración con otros servicios de AWS como S3, lo que te permite aprovechar el ecosistema completo de herramientas y servicios de la nube.
+    4. Es un servicio costo-eficiente ya que solo pagamos por el tiempo que dure la extracción de los datos
+    
+    Tener en cuenta que para esta primer etapa se propone que la información sea ingestada incrementalmente y almacenada en particiones por año/mes/dia dentro de S3 de AWS en la zona “Raw”, esto con el fin de que el catalogo de Glue se active el particionado por el index de tiempo (año/mes/dia) y más adelante en la siguiente capa los datos puedan ser consultados de forma eficiente y rapida, tambien pensando en mantener un buen rendimeinto a largo plazo.
+    
+2. **Capa de procesamiento y modelado:**  Una vez los datos sean ingestados y almacenados en la zona “Raw” de S3, empiezará el procesamiento y modelado dimensional para la solución analitica. La propuesta sugiere a dbt como herramienta de transformación y modelamiento de los datos, debido a:
+    1. Asegura de forma rapida y sencilla con ayuda de SQL que los resultados sean coherentes y predecibles
+    2. Incorpora pruebas que permite definir casos de prueba para los modelos de datos durante las diferentes etapas (Silver,Gold). Esto ayuda a verificar la calidad de las transformaciones y a detectar posibles problemas o inconsistencias en los datos.
+    3. Se propone utilizar dbt detro de una arquitectura de microservicios lo que permite escalabilidad con el fin de manejar grandes volumenes de datos si es necesario.Ya que la propuesta consta de ejecutar pods dentro de un cluster de EKS con una imagen previamente construida que contenga dbt, mediante el KubernetesPodOperator de Airflow.
+    4. Es compatible con control de versiones en las consultas SQL, tambien en este caso la versión estará dada por  una imagen de docker almacenada desde el repositorio de AWS, conocido como ECR (Elastic Container Register).
+    
+    Cada etapa consta de caracteristicas definidas, en la capa “Raw” se almacenan los datos originales, sin procesar, en nuestro caso los datos provenientes del dataset descrito en el paso 1 y almacenados por la capa de ingesta anteriormente descrita. En la capa “Silver” representa una versión enriquecida, limpia con reglas de negocio, columnas renombradas (si es necesario) y validada de los datos en la que se puede confiar para el análisis posterior. En la ultima capa denominada “Gold” los datos se modelan y enriquecen (agregaciones) para transformar esos datos en conocimiento util para el negocio, datos que finalmente se alojaran en un modelo dimensional en el Datawarehouse, en la solución con el servicio de AWS Redshift.
+    
+3. **Capa de reporte:** Esta capa finalmente se visualizará la información alojada y modelada de forma adecuada en AWS Redshift mediante una herramienta de BI. En el mercado encontramos multiples herramientas como Power BI, Tableau, Quicksight. En este caso se propone Quicksight.
+4. **Capa de orquestación:** Esta capa es transversal ya que sera la encargada de disparar cada uno de los servicios y comunicar las etapas antes mencionadas, como herramienta de orquestación se sugiere Apache Airflow, debido a:
+    1. Airflow permite crear flujos de trabajo complejos y definir la secuencia y la dependencia entre las tareas de forma intuitiva y sencilla con Python
+    2. Airflow es altamente flexible y extensible con herramientas de diferentes proveedores, lo que permite integrar fácilmente nuevas funcionalidades y adaptarla a diferentes entornos y requisitos. En este caso integrar Glue, S3, dbt(KubernetesPodOperator), Crawlers, Redshift.
+    3. Airflow proporciona una interfaz de usuario (UI) intuitiva para monitorear el estado y el progreso de tus flujos de trabajo. También te permite configurar alertas y notificaciones en caso de que ocurran errores o se cumplan ciertas condiciones, lo que permite reaccionar activamente ante cualquier novedad. Y es muy util para ver el historial de logs de cada intento que ha llevado a cabo, con el fin de mantener la trazavilidad de cada ejecución de los flujos o DAGs orquestados.
+    4. Distribuye las tareas en paralelo o serie según como sea el caso de uso, lo que mejora el rendimiento y acelera el procesamiento de datos, util en la solución si en dado caso es posible ejecutar 2 o más modelos dbt al tiempo
+    5. Permite cambiar el horario de ejecución de forma muy sencilla en caso de cambios en los requisitos o condiciones del entorno.
 - Proponga con qué frecuencia deben actualizarse los datos y por qué.
 
 # Paso 4: Ejecutar la ETL
@@ -85,11 +116,26 @@ clave única, tipo de datos, etc.)
 # Paso 5: Completar la redacción del proyecto
 
 - ¿Cuál es el objetivo del proyecto?
+
+Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
+
+- Codigo del producto
+- Identificador cliente, pais
+- Codigo de orden
+- Dia de facturación
 - ¿Qué preguntas quieres hacer?
+    - ¿ Cuantas fueran las unidades vendidas por cada producto ?
+    - ¿ Cuales son los productos más vendidos ?
+    - ¿ Cual es el pais de origen de los usuarios que más compraron ?
+    - ¿ Total de productos se venden en cada mes, año ?
+    - Productos que más se venden en cada mes del año
 - ¿Por qué eligió el modelo que eligió?
+    - 
+    
 - Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
 escenarios:
     - Si los datos se incrementaran en 100x
+        - 
     - Si las tuberías se ejecutaran diariamente en una ventana de tiempo especifica.
     - Si la base de datos necesitara ser accedido por más de 100 usuarios funcionales.
     - Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su
