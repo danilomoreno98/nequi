@@ -105,7 +105,7 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
     3. Airflow proporciona una interfaz de usuario (UI) intuitiva para monitorear el estado y el progreso de tus flujos de trabajo. También te permite configurar alertas y notificaciones en caso de que ocurran errores o se cumplan ciertas condiciones, lo que permite reaccionar activamente ante cualquier novedad. Y es muy util para ver el historial de logs de cada intento que ha llevado a cabo, con el fin de mantener la trazavilidad de cada ejecución de los flujos o DAGs orquestados.
     4. Distribuye las tareas en paralelo o serie según como sea el caso de uso, lo que mejora el rendimiento y acelera el procesamiento de datos, util en la solución si en dado caso es posible ejecutar 2 o más modelos dbt al tiempo
     5. Permite cambiar el horario de ejecución de forma muy sencilla en caso de cambios en los requisitos o condiciones del entorno.
-    
+
 ## Proponga con qué frecuencia deben actualizarse los datos y por qué.
 Para el negocio es necesario generar reportes diarios, por lo cual, la ingesta de datos debe hacerse una vez al dia. Para la hora de extracción es necesario considerar que no se impacte en gran medida el rendimiento de la base de datos transaccional utilizada por el CRM, con el fin de evitar caidas significativas y perdidas de datos, de preferencial deberia realizarce en horas donde el publico no está activamente realizando ordenes de compra en la plataforma, se propone en horas de la madrugada. Una vez re realice la extracción es necesario, consecuentemente ejecutar la capa de de **Capa de procesamiento y modelado:**, para actualizar los datos en el Datawarehouse.
 
@@ -122,13 +122,12 @@ Para el negocio es necesario generar reportes diarios, por lo cual, la ingesta d
 # Paso 5: Completar la redacción del proyecto
 
 ## ¿Cuál es el objetivo del proyecto?
-
 Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
-
     - Codigo del producto
     - Identificador cliente, pais
     - Codigo de orden
     - Dia de facturación
+
 ## ¿Qué preguntas quieres hacer?
     - ¿ Cuantas fueran las unidades vendidas por cada producto ?
     - ¿ Cuales son los productos más vendidos ?
@@ -137,7 +136,7 @@ Generar un reporte de la cantidad y total facturado de los productos entregados 
     - Productos que más se venden en cada mes del año
 
 ## ¿Por qué eligió el modelo que eligió?
-Se elige por ...
+Debido al objetivo y preguntas planteadas para el negocio que nos gustaria resolver, se identifica que la información que da contexto o describe las transacciones es: información del usuario, información del producto, información de la fecha de la transacción e información del cliente. Por lo cual la información que representa el proceso de negocio se basa en cada transacción de la facturación con sus cantidades cuantitativas, lo que se traduciria en una tabla de hechos. De esta forma llegamos a un claro acercamiento de un modelo dimensional tipo estrella.
     
 ## Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes escenarios:
 - Si los datos se incrementaran en 100x
