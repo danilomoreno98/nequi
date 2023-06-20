@@ -126,8 +126,8 @@ clave única, tipo de datos, etc.)
 
 Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
 
-    - Codigo del producto
-    - Identificador cliente, pais
+ - Codigo del producto
+ - Identificador cliente, pais
     - Codigo de orden
     - Dia de facturación
     - ¿Qué preguntas quieres hacer?
