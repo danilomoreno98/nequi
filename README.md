@@ -109,10 +109,8 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
 # Paso 4: Ejecutar la ETL
 
 ## Crear las tuberías de datos y el modelo de datos
-## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se
-esperaba
-## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo,
-clave única, tipo de datos, etc.)
+## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se esperaba
+## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
 ## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
 ## Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
 ## Incluir un diccionario de datos
@@ -136,13 +134,11 @@ Generar un reporte de la cantidad y total facturado de los productos entregados 
     - Productos que más se venden en cada mes del año
 
 ## ¿Por qué eligió el modelo que eligió?
-    - fdgd
+Se elige por ...
     
-## Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
-escenarios:
-    - Si los datos se incrementaran en 100x
-        - gdf
-    - Si las tuberías se ejecutaran diariamente en una ventana de tiempo especifica.
-    - Si la base de datos necesitara ser accedido por más de 100 usuarios funcionales.
-    - Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su
-    arquitectura propuesta?
+## Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes escenarios:
+- Si los datos se incrementaran en 100x
+    - gdf
+- Si las tuberías se ejecutaran diariamente en una ventana de tiempo especifica.
+- Si la base de datos necesitara ser accedido por más de 100 usuarios funcionales.
+- Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su arquitectura propuesta?
