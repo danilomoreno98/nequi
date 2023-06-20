@@ -147,5 +147,5 @@ Debido al objetivo y preguntas planteadas para el negocio que nos gustaria resol
     - Si nuestro Datawarehouse es accedido por varios usuarios funcionales, tenemos 2 opciones:
         1. Implementar un proxy para optimizar y evitar que sufra nuestro Datawarehouse, la ventaja es que es una solución NO CODE, en el siguiente link se puede profundizar sobre esta solución: https://aws.amazon.com/es/blogs/apn/improving-application-performance-with-no-code-changes-using-heimdalls-database-proxy-for-amazon-redshift/
         2. Implemetar una base de datos en memoria para mejorar el rendimiento y que los usuarios funcionales no tengan problemas en consultar la información común consultada y obtener carga de datos en un tiempo optimo. Esto tambien es posible con herramientas nativas de AWS como Spice del visualizador Quicksight.
-- Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su arquitectura propuesta?
+- Si se requiere hacer analítica en tiempo real, ¿cuales componentes cambiaria a su arquitectura propuesta? <br />
     Para ingestar datos en tiempo real, tocaria cambiar el job de Glue Clasico por un **AWS Kinesis Data Stream**, combinado por un **job de Glue en Streaming** para poder realizar analitica en tiempo real para ingestar datos en real time.
