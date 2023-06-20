@@ -117,8 +117,12 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
 Para el negocio es necesario generar reportes diarios, por lo cual, la ingesta de datos debe hacerse una vez al dia. Para la hora de extracción es necesario considerar que no se impacte en gran medida el rendimiento de la base de datos transaccional utilizada por el CRM, con el fin de evitar caidas significativas y perdidas de datos, de preferencial deberia realizarce en horas donde el publico no está activamente realizando ordenes de compra en la plataforma, se propone en horas de la madrugada. Una vez re realice la extracción es necesario, consecuentemente ejecutar la capa de de "**Capa de procesamiento y modelado**", para actualizar los datos en el Datawarehouse.
 
 # Paso 4: Ejecutar la ETL
-
+Para ejecutar la ETL, se simula un entorno local con el orquestador Airflow, con la ayuda de una imagen de docker construida para esta ocasión. El archivo de dicha imagen se encuentra dentro de este repositorio como "docker-compose.yaml", ademas, esta imagen tiene un volumen apuntando al folder denominado DAGS, donde se encuentran los archivos .py, por si se quiere recrear este escenario en tu maquina local. solo basta con clonar el repositorio, claramente tener instaldo y corriendo Docker y finalmente ejecutar el comando:
+```
+docker-compose up
+```
 ## Crear las tuberías de datos y el modelo de datos
+
 ## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se esperaba
 ## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
 ## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
