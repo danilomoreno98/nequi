@@ -136,6 +136,11 @@ Este DAG se encuentra dentro del folder DAGS/processing_modeling_layer.py
     </p>
 
 ## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se esperaba
+Como se observa en la imagen anterior de la "Capa de procesamiento y modelamiento", hay tareas dentro del DAG destinadas al control de calidad para cada una de las tablas del modelo dimensional (dim y fct), estas tareas son muy sencillas de configurar desde los test destinados a este fin dentro de dbt (https://docs.getdbt.com/docs/build/tests), a continuación se nombran cada una de dichas tareas:
+- stg_dim_date_test
+- stg_dim_customers_test
+- stg_dim_products_test
+- stg_fct_invoices_test
 ## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo, clave única, tipo de datos, etc.)
 ## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
 ## Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
