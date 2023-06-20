@@ -123,13 +123,13 @@ docker-compose up
 ```
 ## Crear las tuberías de datos y el modelo de datos
 ### Nota: Los DAGs con los pipelines no son funcionales, solo son de referencia. Es decir no ejecutan ni modelos dbt, ni disparan crawlers de AWS o almacenan información, solo detallan el flujo de la arquitectura y los controles de calidad propuestos.
-- DAG Capa de Ingesta
+- DAG Capa de Ingesta <br />
 Este DAG se encuentra dentro del folder DAGS/extraction_layer.py
 <p align="center">
     <img src="https://github.com/danilomoreno98/nequi/blob/main/images/extraction_layer.png">
     </p>
 
-- DAG Capa de Procesamiento y modelamiento
+- DAG Capa de Procesamiento y modelamiento<br />
 Este DAG se encuentra dentro del folder DAGS/processing_modeling_layer.py
 <p align="center">
     <img src="https://github.com/danilomoreno98/nequi/blob/main/images/processing_modeling_layer.png">
