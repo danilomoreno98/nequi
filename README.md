@@ -105,7 +105,8 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
     3. Airflow proporciona una interfaz de usuario (UI) intuitiva para monitorear el estado y el progreso de tus flujos de trabajo. También te permite configurar alertas y notificaciones en caso de que ocurran errores o se cumplan ciertas condiciones, lo que permite reaccionar activamente ante cualquier novedad. Y es muy util para ver el historial de logs de cada intento que ha llevado a cabo, con el fin de mantener la trazavilidad de cada ejecución de los flujos o DAGs orquestados.
     4. Distribuye las tareas en paralelo o serie según como sea el caso de uso, lo que mejora el rendimiento y acelera el procesamiento de datos, util en la solución si en dado caso es posible ejecutar 2 o más modelos dbt al tiempo
     5. Permite cambiar el horario de ejecución de forma muy sencilla en caso de cambios en los requisitos o condiciones del entorno.
-- Proponga con qué frecuencia deben actualizarse los datos y por qué.
+    
+## Proponga con qué frecuencia deben actualizarse los datos y por qué.
 Para el negocio es necesario generar reportes diarios, por lo cual, la ingesta de datos debe hacerse una vez al dia. Para la hora de extracción es necesario considerar que no se impacte en gran medida el rendimiento de la base de datos transaccional utilizada por el CRM, con el fin de evitar caidas significativas y perdidas de datos, de preferencial deberia realizarce en horas donde el publico no está activamente realizando ordenes de compra en la plataforma, se propone en horas de la madrugada. Una vez re realice la extracción es necesario, consecuentemente ejecutar la capa de de **Capa de procesamiento y modelado:**, para actualizar los datos en el Datawarehouse.
 
 # Paso 4: Ejecutar la ETL
