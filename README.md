@@ -9,16 +9,14 @@ Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe t
 [https://archive.ics.uci.edu/dataset/502/online+retail+ii](https://archive.ics.uci.edu/dataset/502/online+retail+ii)
     
 
-- Explicar para qué casos de uso final deseas preparar los datos, por ejemplo: tabla de análisis, aplicación de fondo, base de datos de fuentes de verdad, etc.)
-    
-    Tabla de análisis del comportamiento de facturación: Examinar los patrones de compra de los clientes. Podremos identificar segmentos de clientes, determinar su frecuencia de compra, comprender mejor el comportamiento del cliente y optimizar la estrategias de marketing y fidelización.
-    
+## Explicar para qué casos de uso final deseas preparar los datos, por ejemplo: tabla de análisis, aplicación de fondo, base de datos de fuentes de verdad, etc.
+Tabla de análisis del comportamiento de facturación: Examinar los patrones de compra de los clientes. Podremos identificar segmentos de clientes, determinar su frecuencia de compra, comprender mejor el comportamiento del cliente y optimizar la estrategias de marketing y fidelización.
 
 # Paso 2: Explorar y evaluar los datos, el EDA
 
-- Explorar los datos para identificar problemas de calidad de los datos, como valores perdidos, datos duplicados, problemas de formato etc.
+## Explorar los datos para identificar problemas de calidad de los datos, como valores perdidos, datos duplicados, problemas de formato etc.
     
-    Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los resultados fueron:
+Para explorar los datos se siguen los pasos propuestos en el siguiente paso. Los resultados fueron:
     
 1. **Lectura de datos:** “Numero de registros del dataset: 1067371”
 2. **Exploración cantidad de variables y tipo:** Se deja como observación que la columna denominada “Customer ID” debe ser tratada como tipo int
@@ -56,7 +54,7 @@ Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe t
 5. **Exploración consistencia en datos:** En este caso en particualar es importante verificar que los datos numericos esten dentro del rango numero logico, por ejemplo si hablamos de edad no sean negativos. En ese caso “Price” y “Customer ID” no sean negativos; los valores de la columna “Quantity” pueden ser negativos ya que refleja un reembolso de articulos.
     
 
-- Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
+## Documentar los pasos necesarios para limpiar los datos, indicar que tipo de pasos se sugieren para la limpieza. Tip se puede usar un diagrama, mapa mental o adición en la arquitectura del paso siguiente con el fin de dejar claro este paso.
 
 <p align="center">
   <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Diagramas%20-EDA.drawio.png">
@@ -64,20 +62,20 @@ Dados los criterios sugeridos en los cuales el dataset debe ser publico y debe t
 
 # Paso 3: Definir el modelo de datos
 
-- Trazar el modelo de datos conceptual y explicar por qué se eligió ese modelo.
+## Trazar el modelo de datos conceptual y explicar por qué se eligió ese modelo.
     
-    A continuación se traza el modelo conceptual, la explicación detallada se encuentra en el “**Punto 5: Completar la redacción del proyecto”**
-    <p align="center">
-    <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Modelos%20de%20datos%20dimensional.png">
-    </p>
-    
-- Diseñar la arquitectura y los recursos utilizados.
+A continuación se traza el modelo conceptual, la explicación detallada se encuentra en el “**Punto 5: Completar la redacción del proyecto”**
+<p align="center">
+<img src="https://github.com/danilomoreno98/nequi/blob/main/images/Modelos%20de%20datos%20dimensional.png">
+</p>
+
+## Diseñar la arquitectura y los recursos utilizados.
 
 <p align="center">
     <img src="https://github.com/danilomoreno98/nequi/blob/main/images/Arquitectura%20-%20Nequi.png">
     </p>
 
-- Indique claramente los motivos de la elección de las herramientas y tecnologías para el proyecto.
+## Indique claramente los motivos de la elección de las herramientas y tecnologías para el proyecto.
 
 Nota: Se propone que los datos fuentes se encuentran almacenados en una base de datos relacional tipo PostgreSQL dentro de AWS, denotada como **CRM Invoices** y contiene los mismos datos del dataset propuesto.
 
@@ -110,19 +108,19 @@ La solución cuenta con 4 capas, las cuales se describen a continuación:
 
 # Paso 4: Ejecutar la ETL
 
-- Crear las tuberías de datos y el modelo de datos
-- Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se
+## Crear las tuberías de datos y el modelo de datos
+## Ejecutar controles de calidad de los datos para asegurar que la tubería funcionó como se
 esperaba
-- Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo,
+## Control de calidad en los datos con la integridad en la base de datos relacional (por ejemplo,
 clave única, tipo de datos, etc.)
-- Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
-- Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
-- Incluir un diccionario de datos
-- Criterio de reproducibilidad
+## Pruebas de unidad para los “Script” para asegurar que están haciendo lo correcto.
+## Comprobaciones de fuente/conteo para asegurar la integridad de los datos.
+## Incluir un diccionario de datos
+## Criterio de reproducibilidad
 
 # Paso 5: Completar la redacción del proyecto
 
-- ¿Cuál es el objetivo del proyecto?
+## ¿Cuál es el objetivo del proyecto?
 
 Generar un reporte de la cantidad y total facturado de los productos entregados y devueltos durante los años 2009 a 2011, habilitando un detalle de fecha diario, desglosado por:
 
@@ -130,17 +128,17 @@ Generar un reporte de la cantidad y total facturado de los productos entregados 
     - Identificador cliente, pais
     - Codigo de orden
     - Dia de facturación
-- ¿Qué preguntas quieres hacer?
+## ¿Qué preguntas quieres hacer?
     - ¿ Cuantas fueran las unidades vendidas por cada producto ?
     - ¿ Cuales son los productos más vendidos ?
     - ¿ Cual es el pais de origen de los usuarios que más compraron ?
     - ¿ Total de productos se venden en cada mes, año ?
     - Productos que más se venden en cada mes del año
 
-- ¿Por qué eligió el modelo que eligió?
+## ¿Por qué eligió el modelo que eligió?
     - fdgd
     
-- Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
+## Incluya una descripción de cómo abordaría el problema de manera diferente en los siguientes
 escenarios:
     - Si los datos se incrementaran en 100x
         - gdf
